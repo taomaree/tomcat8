@@ -30,6 +30,7 @@ RUN set -eux; groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody && useradd -u
     wget -c https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz ; \
     tar xzfv "server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" --strip-components=1 -C $JAVA_HOME ; \
     tar zxfv apache-tomcat-$TOMCAT_VERSION.tar.gz --strip-components=1 -C $CATALINA_HOME ; \
+    rm -rf $CATALINA_HOME/webapps/* ; \
     rm -rf  server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz apache-tomcat-$TOMCAT_VERSION.tar.gz ;
 
 ADD server.xml $CATALINA_HOME/conf/
