@@ -10,7 +10,7 @@ ENV TZ=Asia/Shanghai \
     TOMCAT_MAJOR=8 \
     TOMCAT_VERSION=8.5.35 \
     CATALINA_HOME=/app/tomcat \
-    PATH=$CATALINA_HOME/bin:$PATH:$JAVA_HOME/bin \
+    PATH="$PATH:${JAVA_HOME}/bin:${CATALINA_HOME}/bin" \
     TOMCAT_URIENCODING='UTF-8' 
     
 RUN set -eux; groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody && useradd -u 8080 -o java ; \
