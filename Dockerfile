@@ -32,6 +32,9 @@ RUN set -eux; groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody && useradd -u
     tar zxfv apache-tomcat-$TOMCAT_VERSION.tar.gz --strip-components=1 -C $CATALINA_HOME ; \
     rm -rf  server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz apache-tomcat-$TOMCAT_VERSION.tar.gz ;
 
+ADD server.xml $CATALINA_HOME/conf/
+ADD setenv.sh  $CATALINA_HOME/bin/
+
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
