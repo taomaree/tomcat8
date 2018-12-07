@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 as builder
+FROM ubuntu:18.04
 
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive \
