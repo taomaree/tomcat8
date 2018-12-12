@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive \
-    JAVA_VERSION=8 \
+    JAVA_MAJOR=8 \
     JAVA_UPDATE=192 \
     JAVA_BUILD=12 \
     JAVA_PATH=750e1c8617c5452694857ad95c3ee230 \
@@ -26,13 +26,13 @@ RUN set -eux; groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody && useradd -u
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime ; \
     mkdir -p $JAVA_HOME  $CATALINA_HOME  ; \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
-        -c "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" ; \
+        -c "http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/server-jre-${JAVA_MAJOR}u${JAVA_UPDATE}-linux-x64.tar.gz" ; \
     wget -O apache-tomcat-$TOMCAT_VERSION.tar.gz -c "https://www.apache.org/dyn/closer.cgi?action=download&filename=tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz" ; \
     wget -c https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz ; \
-    tar xzfv "server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" --strip-components=1 -C $JAVA_HOME ; \
+    tar xzfv "server-jre-${JAVA_MAJOR}u${JAVA_UPDATE}-linux-x64.tar.gz" --strip-components=1 -C $JAVA_HOME ; \
     tar zxfv apache-tomcat-$TOMCAT_VERSION.tar.gz --strip-components=1 -C $CATALINA_HOME ; \
     rm -rf $CATALINA_HOME/webapps/* ; \
-    rm -rf  server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz apache-tomcat-$TOMCAT_VERSION.tar.gz ;
+    rm -rf  server-jre-${JAVA_MAJOR}u${JAVA_UPDATE}-linux-x64.tar.gz apache-tomcat-$TOMCAT_VERSION.tar.gz ;
 
 ADD server.xml $CATALINA_HOME/conf/
 ADD setenv.sh  $CATALINA_HOME/bin/
