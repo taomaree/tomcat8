@@ -3,9 +3,9 @@ FROM ubuntu:18.04
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive \
     JAVA_MAJOR=8 \
-    JAVA_UPDATE=192 \
-    JAVA_BUILD=12 \
-    JAVA_PATH=750e1c8617c5452694857ad95c3ee230 \
+    JAVA_UPDATE=202 \
+    JAVA_BUILD=08 \
+    JAVA_PATH=1961070e4c9b4e26a04e7f5a083f551e \
     JAVA_HOME="/usr/java/latest" \
     TOMCAT_MAJOR=8 \
     TOMCAT_VERSION=8.5.35 \
